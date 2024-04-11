@@ -19,7 +19,7 @@ RUN git submodule update --init --recursive
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Need sudo and lsb-release for the installation prerequisites
-RUN apt-get install -y sudo lsb-release tzdata
+RUN apt-get install -y sudo lsb-release tzdata python3-pip
 
 # Need USER set so usermod does not fail...
 # Install all prerequisites now
