@@ -1,5 +1,4 @@
-FROM ubuntu:18.04
-
+FROM ubuntu:22.04
 ARG COPTER_TAG=Copter-4.0.3
 
 # install git 
