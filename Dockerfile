@@ -23,7 +23,17 @@ RUN apt-get install -y sudo lsb-release tzdata
 
 # Need USER set so usermod does not fail...
 # Install all prerequisites now
-RUN USER=nobody Tools/environment_install/install-prereqs-ubuntu.sh -y
+RUN useradd -m dockeruser && echo "dockeruser:dockeruser" | chpasswd && adduser dockeruser sudo
+
+RUN echo 'dockeruser ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+ENV SKIP_AP_GIT_CHECK=1
+RUN su -c "Tools/environment_install/install-prereqs-ubuntu.sh -y" dockeruser
+
+RUN export PATH=$PATH:$HOME/ardupilot/Tools/autotest
+RUN export PATH=/usr/lib/ccache:$PATH
+
+RUN python -m pip install empy
 
 # Continue build instructions from https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md
 RUN ./waf distclean
