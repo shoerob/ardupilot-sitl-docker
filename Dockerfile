@@ -34,6 +34,7 @@ RUN export PATH=$PATH:$HOME/ardupilot/Tools/autotest
 RUN export PATH=/usr/lib/ccache:$PATH
 
 RUN pip3 install empy
+RUN pip3 install pexpect
 
 # Continue build instructions from https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md
 RUN ./waf distclean
