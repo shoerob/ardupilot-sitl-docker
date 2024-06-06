@@ -3,30 +3,6 @@ ArduPilot Software-in-the-Loop Simulator Docker Container
 
 The purpose of this is to run an ArduPilot SITL from within Docker.
 
-DockerHub
----------
-
-A pre-built Docker image is available on DockerHub at:
-
-https://hub.docker.com/r/shoerob/ardupilot-sitl
-
-- To download it, run `docker pull shoerob/ardupilot-sitl`
-- To run it, run `docker run -it --rm -p 5760:5760 shoerob/ardupilot-sitl`
-- To use it with [Docker Compose](https://docs.docker.com/compose/), add the following service to your `docker-compose.yml` file:
-    - You can launch it with `docker-compose up -d`
-    - If you update your `docker-compose.yml`, you can restart your container by running `docker-compose up -d` without getting the container ID and killing the container manually. See https://github.com/shoerob/ardupilot-sitl-docker/issues/3
-    - To check the logs in `ArduCopter.log`, run `docker exec -it "$FOLDER_NAME_ardupilot-sitl_1" watch -n 1 "cat /tmp/ArduCopter.log"`, where you should update `$FOLDER_NAME` with the folder containing the `docker-compose.yml`.
-
-```yml
-services:
-  ardupilot-sitl:
-    image: shoerob/ardupilot-sitl
-    platform: linux/amd64
-    tty: true
-    ports:
-      - 5760:5760
-```
-
 Quick Start
 -----------
 
