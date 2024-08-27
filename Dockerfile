@@ -35,6 +35,7 @@ RUN export PATH=/usr/lib/ccache:$PATH
 RUN pip3 install empy==3.3.4
 RUN pip3 install pexpect
 RUN pip3 install future
+RUN pip3 install pymavlink
 
 # Continue build instructions from https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md
 RUN ./waf distclean
